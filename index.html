@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>reactive button</title>
+    <style>
+		.hamburger-menu {
+		    background-color: #2a3a72;
+		    border-radius: 50%;
+		    box-shadow: 3px 0 15px 1px rgba(0, 0, 0, 0.2);
+		    display: block;
+		    float: right;
+		    height: 52px;
+		    position: fixed;
+		    right: 20px;
+		    text-align: right;
+		    top: 20px;
+		    width: 52px;
+		    z-index: 1000;
+		}
+
+		.hamburger-menu .hamicon::before {
+		    background-color: #fff;
+		    content: "";
+		    height: 3px;
+		    left: 0;
+		    position: absolute;
+		    top: -10px;
+		    transition-duration: 0.3s;
+		    width: 28px;
+		}
+
+		.hamburger-menu .hamicon {
+		    background-color: #fff;
+		    height: 3px;
+		    left: 12px;
+		    position: absolute;
+		    top: 25px;
+		    transition-duration: 0.3s;
+		    width: 28px;
+		}
+
+		.hamburger-menu .hamicon::after {
+		    background-color: #fff;
+		    content: "";
+		    height: 3px;
+		    left: 0;
+		    position: absolute;
+		    top: 10px;
+		    transition-duration: 0.3s;
+		    width: 28px;
+		}
+
+		.hamburger-menu.menu-open {
+		    z-index: 10002;
+		}
+
+		.hamburger-menu.menu-open .hamicon::before {
+		    transform: rotateZ(45deg) scaleX(1.25) translate(6.5px, 6.5px);
+		    transition-duration: 0.3s;
+		}
+
+		.hamburger-menu.menu-open .hamicon {
+		    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+		    transition-duration: 0.3s;
+		}
+
+		.hamburger-menu.menu-open .hamicon::after {
+		    transform: rotateZ(-45deg) scaleX(1.25) translate(6px, -6px);
+		    transition-duration: 0.3s;
+		}
+	</style>
+</head>
+<body>
+	<div alt="" class="hamburger-menu">
+		<span class="hamicon"></span>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		$(function() {
+			$(document).on('click', '.hamburger-menu', function() {
+				var hamburgerMenu = $(this);
+				
+				hamburgerMenu.toggleClass('menu-open');
+			});
+		});
+	</script>
+</html>
